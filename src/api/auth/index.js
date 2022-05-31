@@ -16,15 +16,16 @@ Auth.use('*', (req, _, next) => {
 
     const token = req.headers.authorization.split(/ /)[1];
     AccountManager.authorizeToken(token).then(async username => {
-        console.log(username);
-
         const collection = await DataManager.collection('users');
         if (!collection) return next();
 
         const user = await collection.findOne({
             username
         }, {
-            password: 0
+            projection: {
+                _id: 0,
+                password: 0
+            }
         });
 
         req.user = user;
@@ -33,6 +34,11 @@ Auth.use('*', (req, _, next) => {
         console.log('None');
         next();
     });
+});
+
+Auth.get('/auth', (req, res) => {
+    if (!req.user) return res.status(401).end();
+    res.send(req.user);
 });
 
 Auth.use(Login);

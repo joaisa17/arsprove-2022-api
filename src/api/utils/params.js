@@ -13,7 +13,8 @@ function regex(str, expression) {
  */
 export default function ValidateParams(req, params) {
     return !Object.keys(params).map(key =>
-        params[key] instanceof RegExp? regex(req.body[key], params[key])
+        params[key] instanceof Array? params[key].includes(typeof req.body[key])
+        :params[key] instanceof RegExp? regex(req.body[key], params[key])
         :(typeof req.body[key]) === params[key]
     ).includes(false);
 }

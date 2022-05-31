@@ -26,8 +26,23 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3001/auth/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTA4ODkwLCJleHAiOjE2NTM5OTUyOTB9.VmDFj4TdTSWnE2bXIAI3k5zO0PXro61XwAUZUT6pHFk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTg4NTk3LCJleHAiOjE2NTQwNzQ5OTd9.kuyT0D-K-xXB1KlaHHGpGV-og4sbLi6E4OzZmk_a_sc
 
 ###
-POST http://localhost:3001/rooms/reserve
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTA4ODkwLCJleHAiOjE2NTM5OTUyOTB9.VmDFj4TdTSWnE2bXIAI3k5zO0PXro61XwAUZUT6pHFk
+POST http://localhost:3001/session/reserve
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTkzNzc5LCJleHAiOjE2NTQwODAxNzl9.tWEQnrO02M3NDuD3Rsd3HAhY2XaYgt-PBye1fZzoCIg
+Content-Type: application/json
+
+{
+    "dateFrom": "2022-06-01:10:00",
+    "dateTo": "2022-06-01:12:00"
+}
+
+###
+DELETE http://localhost:3001/session/reserve
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTkzNzc5LCJleHAiOjE2NTQwODAxNzl9.tWEQnrO02M3NDuD3Rsd3HAhY2XaYgt-PBye1fZzoCIg
+Content-Type: application/json
+
+{
+    "id": "6295c1e47d619bc9540ea9ea"
+}

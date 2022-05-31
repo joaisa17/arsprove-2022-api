@@ -31,7 +31,6 @@ class AccountManager {
     }
 
     /**
-     * 
      * @param {string} username 
      * @param {string} pwd 
      * @param {Object<string, any>|undefined} additionalData 
