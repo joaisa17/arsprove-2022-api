@@ -26,23 +26,34 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3001/auth/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTg4NTk3LCJleHAiOjE2NTQwNzQ5OTd9.kuyT0D-K-xXB1KlaHHGpGV-og4sbLi6E4OzZmk_a_sc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjU0MDY1MTI1LCJleHAiOjE2NTQxNTE1MjV9.QhpI911H89SWQD1nTsQ6TY592zGD64lZ0YryVR0uNy4
 
 ###
-POST http://localhost:3001/session/reserve
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTkzNzc5LCJleHAiOjE2NTQwODAxNzl9.tWEQnrO02M3NDuD3Rsd3HAhY2XaYgt-PBye1fZzoCIg
+GET http://localhost:3001/sessions
 Content-Type: application/json
 
 {
-    "dateFrom": "2022-06-01:10:00",
-    "dateTo": "2022-06-01:12:00"
+    "month": "2022-06"
+}
+
+###
+GET http://localhost:3001/sessions?month=2022-06
+
+###
+POST http://localhost:3001/session/reserve
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjU0MDY1MTI1LCJleHAiOjE2NTQxNTE1MjV9.QhpI911H89SWQD1nTsQ6TY592zGD64lZ0YryVR0uNy4
+Content-Type: application/json
+
+{
+    "dateFrom": "2022-06-09:16:00",
+    "dateTo": "2022-06-09:17:00"
 }
 
 ###
 DELETE http://localhost:3001/session/reserve
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjUzOTkzNzc5LCJleHAiOjE2NTQwODAxNzl9.tWEQnrO02M3NDuD3Rsd3HAhY2XaYgt-PBye1fZzoCIg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwiaWF0IjoxNjU0MDY1MTI1LCJleHAiOjE2NTQxNTE1MjV9.QhpI911H89SWQD1nTsQ6TY592zGD64lZ0YryVR0uNy4
 Content-Type: application/json
 
 {
-    "id": "6295c1e47d619bc9540ea9ea"
+    "id": "62970803bc4f7d858717d4ba"
 }

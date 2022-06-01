@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import DataManager from '../../mongo';
 import AccountManager from '../../mongo/account';
 
 import ValidateParams from '../utils/params';
@@ -16,11 +15,14 @@ Register.post('/account/register', async (req, res) => {
     })) return res.status(400).end();
 
     const status = await AccountManager.register(
-        req.body.username,
+        req.body.username.toLowerCase(),
         req.body.password
     );
 
-    res.status(status).end();
+    if (status !== 200) return res.status(status).end();
+
+    const token = AccountManager.generateToken(req.body.username);
+    res.send(token);
 });
 
 export default Register;

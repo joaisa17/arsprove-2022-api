@@ -1,6 +1,7 @@
 import DataManager from '.';
 
 import InRange from '../utils/inRange';
+import GroupBy from '../utils/groupBy';
 import ms from 'ms';
 
 const minSessionTime = ms('20m');
@@ -51,6 +52,24 @@ function inOpenHours(from, to) {
 
 
 class BookingManager {
+    /**
+     * @param {Date} from 
+     * @param {Date} to 
+     */
+    async getSessionsInRange(dateFrom, dateTo) {
+        const collection = DataManager.collection('bookedSessions');
+        if (!collection) return 500;
+
+        const result = await collection.find({
+            dateFrom: {
+                $gte: dateFrom,
+                $lte: dateTo
+            }
+        }).sort({ dateFrom: 1 }).toArray();
+
+        return GroupBy(result, e => new Date(e.dateFrom).getDate());
+    }
+
     async getAllSessions() {
         const collection = DataManager.collection('bookedSessions');
         if (!collection) return 500;
