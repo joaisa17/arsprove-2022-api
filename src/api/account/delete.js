@@ -8,21 +8,10 @@ const Delete = Router();
 
 Delete.delete('/account/manage', async (req, res) => {
     //await Suspend(3000);
-
-    if (!ValidateParams(req, {
-        username: 'string',
-        password: 'string'
-    })) return res.status(400).end();
-
-    const authStatus = await AccountManager.authorize(
-        req.body.username,
-        req.body.password
-    );
-
-    if (authStatus !== 200) return res.status(authStatus).end();
+    if (!req.user) return res.status(401).end();
 
     const status = await AccountManager.delete(
-        req.body.username
+        req.user.username
     );
 
     res.status(status).end();
