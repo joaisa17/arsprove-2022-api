@@ -1,4 +1,12 @@
 import 'dotenv/config';
+if (
+    !process.env.PORT ||
+    !process.env.DB ||
+    !process.env.DBUSERNAME ||
+    !process.env.DBPASSWORD ||
+    !process.env.TOKEN_SECRET
+) throw new Error('Missing .env config information. Check README.md for more info');
+
 import express from 'express';
 
 import API from './api';
