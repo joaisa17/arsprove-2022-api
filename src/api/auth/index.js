@@ -31,7 +31,6 @@ Auth.use('*', (req, _, next) => {
         req.user = user;
         next();
     }).catch(() => {
-        console.log('None');
         next();
     });
 });
